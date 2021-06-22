@@ -1,0 +1,28 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+scrape_configs:
+  - job_name: 'prometheus'
+    honor_timestamps: true
+    scrape_interval: 5s
+    scrape_timeout:  5s
+    metrics_path: '/metrics'
+    scheme: http
+    static_configs:
+      - targets: ['localhost:9090']
+
+  - job_name: 'proposta'
+    scrape_interval: 5s
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: ['host.docker.internal:8081']
+
+    oauth2:
+      client_id: 'propostas-prometheus'
+      client_secret: 'c6345311-a83c-45b4-8415-c09a0392be3e'
+
+      scopes:
+        - 'propostas-prometheus:read'
+
+      token_url: http://host.docker.internal:8080/auth/realms/cartoes/protocol/openid-connect/token
