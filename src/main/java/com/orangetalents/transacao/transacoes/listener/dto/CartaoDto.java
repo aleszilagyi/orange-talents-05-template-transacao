@@ -1,4 +1,4 @@
-package com.orangetalents.transacao.transacoes.dto;
+package com.orangetalents.transacao.transacoes.listener.dto;
 
 import java.util.UUID;
 

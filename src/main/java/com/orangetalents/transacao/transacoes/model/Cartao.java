@@ -1,10 +1,7 @@
 package com.orangetalents.transacao.transacoes.model;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 
 @Entity
 @Table
@@ -14,7 +11,8 @@ public class Cartao {
     private String email;
     @ElementCollection
     @OneToMany(mappedBy = "cartao", cascade = CascadeType.ALL)
-    private Set<Transacao> transacoes = new HashSet<>();
+    @OrderBy("efetivadaEm desc")
+    private SortedSet<Transacao> transacoes = new TreeSet<>();
 
     @Deprecated
     public Cartao() {

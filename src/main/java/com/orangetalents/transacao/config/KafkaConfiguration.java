@@ -1,6 +1,6 @@
 package com.orangetalents.transacao.config;
 
-import com.orangetalents.transacao.transacoes.dto.EventoDeTransacaoDto;
+import com.orangetalents.transacao.transacoes.listener.dto.EventoDeTransacaoDto;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.springframework.boot.autoconfigure.kafka.KafkaProperties;

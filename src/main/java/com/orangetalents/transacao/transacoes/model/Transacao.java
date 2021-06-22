@@ -8,7 +8,7 @@ import java.util.UUID;
 
 @Entity
 @Table
-public class Transacao {
+public class Transacao implements Comparable<Transacao> {
     @Id
     private UUID id;
     private BigDecimal valor;
@@ -30,6 +30,18 @@ public class Transacao {
         this.efetivadaEm = efetivadaEm;
     }
 
+    public BigDecimal getValor() {
+        return valor;
+    }
+
+    public Estabelecimento getEstabelecimento() {
+        return estabelecimento;
+    }
+
+    public LocalDateTime getEfetivadaEm() {
+        return efetivadaEm;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -41,5 +53,10 @@ public class Transacao {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    @Override
+    public int compareTo(Transacao o) {
+        return this.efetivadaEm.compareTo(o.efetivadaEm);
     }
 }

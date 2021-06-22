@@ -1,4 +1,4 @@
-package com.orangetalents.transacao.transacoes;
+package com.orangetalents.transacao.transacoes.listener;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;

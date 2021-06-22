@@ -1,7 +1,6 @@
-package com.orangetalents.transacao.transacoes;
+package com.orangetalents.transacao.transacoes.listener;
 
-import com.orangetalents.transacao.transacoes.dto.EventoDeTransacaoDto;
-import com.orangetalents.transacao.transacoes.model.Transacao;
+import com.orangetalents.transacao.transacoes.listener.dto.EventoDeTransacaoDto;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.annotation.Validated;

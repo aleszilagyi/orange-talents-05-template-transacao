@@ -1,6 +1,6 @@
-package com.orangetalents.transacao.transacoes;
+package com.orangetalents.transacao.transacoes.listener;
 
-import com.orangetalents.transacao.transacoes.dto.EventoDeTransacaoDto;
+import com.orangetalents.transacao.transacoes.listener.dto.EventoDeTransacaoDto;
 import com.orangetalents.transacao.transacoes.model.Cartao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Modifying;

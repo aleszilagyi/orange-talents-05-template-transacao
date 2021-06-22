@@ -1,4 +1,4 @@
-package com.orangetalents.transacao.transacoes;
+package com.orangetalents.transacao.transacoes.listener;
 
 import com.orangetalents.transacao.transacoes.model.Cartao;
 import org.springframework.data.jpa.repository.JpaRepository;
