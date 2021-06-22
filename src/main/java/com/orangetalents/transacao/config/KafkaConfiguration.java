@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.config.ConcurrentKafkaListenerContainerFactory;
 import org.springframework.kafka.core.ConsumerFactory;
 import org.springframework.kafka.core.DefaultKafkaConsumerFactory;
+import org.springframework.kafka.listener.SeekToCurrentErrorHandler;
 import org.springframework.kafka.support.serializer.JsonDeserializer;
 
 import java.util.HashMap;
@@ -45,6 +46,7 @@ public class KafkaConfiguration {
     public ConcurrentKafkaListenerContainerFactory<String, EventoDeTransacaoDto> kafkaListenerContainerFactory() {
         ConcurrentKafkaListenerContainerFactory<String, EventoDeTransacaoDto> factory = new ConcurrentKafkaListenerContainerFactory<>();
         factory.setConsumerFactory(transactionConsumerFactory());
+        factory.setErrorHandler(new SeekToCurrentErrorHandler());
         return factory;
     }
 }

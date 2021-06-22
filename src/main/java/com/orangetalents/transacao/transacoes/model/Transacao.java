@@ -30,6 +30,10 @@ public class Transacao implements Comparable<Transacao> {
         this.efetivadaEm = efetivadaEm;
     }
 
+    public UUID getId() {
+        return id;
+    }
+
     public BigDecimal getValor() {
         return valor;
     }
