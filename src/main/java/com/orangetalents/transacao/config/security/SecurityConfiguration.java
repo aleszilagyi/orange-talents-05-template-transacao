@@ -13,7 +13,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.csrf().disable()
                 .authorizeRequests(authorizeRequests ->
                         authorizeRequests
-                                .antMatchers(HttpMethod.GET, "/api/transacoes/**").permitAll()
+                                .antMatchers(HttpMethod.GET, "/api/transacoes/**").hasAuthority("SCOPE_transacoes-api:read")
                                 .anyRequest().authenticated()
                 )
                 .oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt);

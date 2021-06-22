@@ -63,7 +63,7 @@ services:
       KEYCLOAK_USER: admin
       KEYCLOAK_PASSWORD: Pa55w0rd
       POSTGRES_PORT_5432_TCP_ADDR: 127.0.0.1
-      KEYCLOAK_FRONTEND_URL: http://keycloak:8080/auth
+#      KEYCLOAK_FRONTEND_URL: http://keycloak:8080/auth
 
   analise:
     image: 'zupacademy/analise-financeira'
