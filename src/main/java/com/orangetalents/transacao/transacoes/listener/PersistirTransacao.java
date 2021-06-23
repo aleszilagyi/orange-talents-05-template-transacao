@@ -30,13 +30,13 @@ public class PersistirTransacao implements ConstraintValidator<PersisteTransacao
         try {
             Cartao cartao = eventoDeTransacaoDto.toModel();
             Optional<Transacao> transacao = transacaoRepository.findByIdAndCartaoId(eventoDeTransacaoDto.getId(), cartao.getId());
-            transacao.ifPresentOrElse((c) -> {
+            transacao.ifPresent((c) -> {
                 throw new KafkaEntidadeJaExisteException(c.getId().toString());
-            }, () -> {
             });
 
             Optional<Cartao> cartaoRegistrado = cartaoRepository.findById(cartao.getId());
             cartaoRegistrado.ifPresentOrElse(c -> c.addTransacao(cartao.getTransacoes()), () -> cartaoRepository.save(cartao));
+
             return true;
         } catch (KafkaException e) {
             logger.warn(e.getMessage());

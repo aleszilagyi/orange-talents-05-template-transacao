@@ -29,7 +29,6 @@ public class IsUUIDValidator implements ConstraintValidator<IsUUID, String> {
         try {
             id = UUID.fromString(s);
         } catch (Exception e) {
-            e.printStackTrace();
             throw new RecursoNotFoundException();
         }
 
@@ -41,6 +40,7 @@ public class IsUUIDValidator implements ConstraintValidator<IsUUID, String> {
         if (list.isEmpty()) {
             throw new RecursoNotFoundException();
         }
+
         return true;
     }
 }

@@ -4,6 +4,7 @@ public class FieldErrorOutputDto {
     private String field;
     private String message;
 
+    @Deprecated
     public FieldErrorOutputDto() {
     }
 
