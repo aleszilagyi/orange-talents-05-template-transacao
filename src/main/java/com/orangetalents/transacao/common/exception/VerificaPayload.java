@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Component
-public class RetornaTipoDeStatus {
+public class VerificaPayload {
 
     public HttpStatus verificaPayload(ConstraintViolation<?> violation) {
         List<HttpStatus> statusList = violation.getConstraintDescriptor().getPayload().stream().map(payload -> {
@@ -27,5 +27,4 @@ public class RetornaTipoDeStatus {
         if (statusList.contains(HttpStatus.UNPROCESSABLE_ENTITY)) return HttpStatus.UNPROCESSABLE_ENTITY;
         return HttpStatus.BAD_REQUEST;
     }
-
 }

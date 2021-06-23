@@ -24,19 +24,6 @@ public class ValidationErrorOutputDto {
         fieldErrors.add(fieldError);
     }
 
-    public ValidationErrorOutputDto(MessageSource messageSource, List<ObjectError> globalErrors, List<FieldError> fieldErrors) {
-        globalErrors.forEach(error -> addError(getErrorMessage(messageSource, error)));
-        fieldErrors.forEach(error -> {
-            String errorMessage = getErrorMessage(messageSource, error);
-            addFieldError(error.getField(), errorMessage);
-        });
-    }
-
-    private String getErrorMessage(MessageSource messageSource, ObjectError error) {
-        return messageSource.getMessage(error, LocaleContextHolder.getLocale());
-    }
-
-
     public List<String> getGlobalErrorMessages() {
         return globalErrorMessages;
     }

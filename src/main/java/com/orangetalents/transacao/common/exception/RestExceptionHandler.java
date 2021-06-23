@@ -17,7 +17,7 @@ public class RestExceptionHandler {
     @Autowired
     private MessageSource messageSource;
     @Autowired
-    private RetornaTipoDeStatus retornaTipoDeStatus;
+    private VerificaPayload verificaPayload;
 
     @ExceptionHandler(ResponseStatusException.class)
     public ResponseEntity handleResponseStatusException(ResponseStatusException ex) {
@@ -37,16 +37,12 @@ public class RestExceptionHandler {
 
     @ExceptionHandler(ConstraintViolationException.class)
     public ResponseEntity handleConstraintViolationException(ConstraintViolationException ex) {
-        return validacoesHandler(ex);
-    }
-
-    private ResponseEntity validacoesHandler(ConstraintViolationException ex) {
         ValidationErrorOutputDto validationErrorOutputDto = new ValidationErrorOutputDto();
         AtomicReference<HttpStatus> status = new AtomicReference<>(HttpStatus.BAD_REQUEST);
 
         ex.getConstraintViolations()
                 .forEach(violation -> {
-                    HttpStatus statusPayload = retornaTipoDeStatus.verificaPayload(violation);
+                    HttpStatus statusPayload = verificaPayload.verificaPayload(violation);
                     if (statusPayload != HttpStatus.BAD_REQUEST) {
                         status.set(statusPayload);
                         validationErrorOutputDto.addError(violation.getMessage());
